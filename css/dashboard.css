@@ -1,0 +1,489 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #04061a;
+  color: white;
+}
+
+.navbar {
+  background-color: rgba(226, 210, 210, 0);
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+}
+
+.navbar-logo img {
+  height: 32px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.navbar-logo img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.navbar-left a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.navbar-left a:hover {
+  background-color: #555;
+  border-radius: 6px;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right input[type="text"],
+.navbar-right button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #555;
+  color: #fff;
+  cursor: text;
+}
+
+.navbar-right input[type="text"] {
+  width: 200px;
+}
+
+.navbar-right .notification-link,
+.navbar-right .profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.navbar-right .notification-link img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navbar-right .profile-link img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navbar-right .notification-link img:hover,
+.navbar-right .profile-link img:hover {
+  transform: scale(1.1);
+}
+
+/* Basic CSS for popup */
+.popup {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  background-color: #fff;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  padding: 20px;
+  max-width: 300px;
+  width: 250px;
+}
+
+.popup.active {
+  display: block;
+}
+
+.profile-info,
+.notification-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: -29px;
+}
+
+.profile-details,
+.notification-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.username {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: -20px;
+}
+
+.your-profile {
+  color: blue;
+  text-decoration: none;
+}
+
+.your-profile:hover {
+  text-decoration: underline;
+}
+
+.sign-out,
+.clear-notification {
+  color: #010101;
+  border: none;
+  background-color: #ffffff00;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: -10px;
+  margin-right: -20px;
+}
+
+.sign-out:hover,
+.clear-notification:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+/* CSS for the notification message */
+.notification-info {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+.no-notification {
+  margin-top: 10px;
+  color: #666;
+  text-align: center;
+  width: 100%;
+}
+
+/* CSS for job posts container and individual job posts */
+.job-posts-container {
+  max-height: calc(100% - 20px);
+  /* Adjusted max height */
+  overflow-y: auto;
+  /* Add overflow-y for scrolling if needed */
+  padding: 10px;
+}
+
+.job-post {
+  background-color: #f0f0f024;
+  /* Background color for job posts */
+  border-radius: 8px;
+  /* Rounded corners */
+  padding: 15px;
+  /* Padding for each job post */
+  margin-bottom: 10px;
+  /* Margin between job posts */
+}
+
+.job-post h2 {
+  font-size: 18px;
+  /* Title font size */
+  margin-bottom: 5px;
+  /* Adjusted margin */
+}
+
+.job-post p {
+  font-size: 16px;
+  /* Description font size */
+}
+
+.posted-by {
+  font-style: italic;
+  /* Italics for posted by text */
+  font-size: 14px;
+  /* Font size for posted by text */
+}
+
+.job-post-popup {
+  max-height: 80%; /* Set maximum height for the popup */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds the maximum height */
+}
+
+.job-post-form-container {
+  padding: 10px; /* Add padding to the form container */
+}
+
+.job-image {
+  width: 100%;
+  height: 60vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* CSS for post job popup */
+#jobPostPopup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  /* Light background color */
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Softer shadow */
+  z-index: 999;
+  padding: 30px;
+  /* Increased padding for better spacing */
+  max-width: 500px;
+  width: 90%;
+  border-radius: 10px;
+}
+
+#jobPostPopup.active {
+  display: block;
+}
+
+/* Title style */
+#jobPostPopup h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  /* Adjusted margin */
+}
+
+.selected-image {
+  max-width: 40%;
+  margin: 5px;
+}
+
+/* Form input style */
+#jobPostPopup input[type="text"],
+#jobPostPopup input[type="file"],
+#jobPostPopup textarea,
+#jobPostPopup select {
+  width: 100%;
+  padding: 12px;
+  /* Increased padding */
+  margin-bottom: 20px;
+  /* Adjusted margin */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+/* Button style */
+#jobPostPopup button[type="submit"] {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  /* Blue color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+#jobPostPopup button[type="submit"]:hover {
+  background-color: #0056b3;
+  /* Darker blue on hover */
+}
+
+/* CSS for the "New" button */
+#openJobPostPopup {
+  padding: 12px 20px;
+  /* Adjusted padding */
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  /* Blue color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#openJobPostPopup:hover {
+  background-color: #0056b3;
+  /* Darker blue on hover */
+}
+
+/* CSS for the "Post Job" button */
+#jobPostFormPopup button[type="submit"] {
+  padding: 12px 20px;
+  /* Adjusted padding */
+  border: none;
+  border-radius: 6px;
+  background-color: #28a745;
+  /* Green color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#jobPostFormPopup button[type="submit"]:hover {
+  background-color: #218838;
+  /* Darker green on hover */
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  height: calc(100vh - 40px);
+  /* Set container height to fill viewport minus padding */
+  margin-top: 40px;
+  /* Adjusted margin top to make space for the navbar */
+}
+
+.column-left {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-right: none;
+  overflow-y: auto;
+  /* Make columns scrollable */
+  padding: 0 20px;
+  max-height: 95%;
+  /* Limit max height to container height */
+}
+
+.column-right {
+  flex: 1;
+  border: 1px solid #ccc;
+  overflow-y: auto;
+  /* Make columns scrollable */
+  padding: 0 20px;
+  max-height: 95%;
+  /* Limit max height to container height */
+  border-left: none;
+}
+
+.middle-column {
+  flex: 2;
+  overflow-y: auto;
+  /* Make the middle column scrollable */
+  padding: 0 20px;
+  border: 1px solid #ccc;
+  max-height: 95%;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.section p {
+  font-size: 16px;
+}
+
+/* Add separator line */
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 20px 0;
+}
+
+/* Improved style for the filter section */
+.filter-options {
+  margin-bottom: 20px;
+}
+
+.filter-option {
+  margin-bottom: 10px;
+}
+
+.filter-option label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  /* Add bold font weight for labels */
+}
+
+.filter-option select,
+.filter-option input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d1d5da;
+  /* Lighter border color */
+  border-radius: 6px;
+  font-size: 14px;
+  /* Smaller font size */
+  background-color: #555;
+  color: #75756a;
+  transition: border-color 0.2s ease-in-out;
+  /* Smoother transition */
+}
+
+.filter-option select:focus,
+.filter-option input:focus {
+  border-color: #0366d6;
+  /* Border color on focus */
+  outline: none;
+  /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.3);
+  /* Add focus shadow */
+}
+
+/* Style for input[type="date"] */
+.filter-option input[type="text"] {
+  max-width: 95%;
+  width: 100%;
+
+  padding: 8px;
+  border: 1px solid #d1d5da;
+  /* Lighter border color */
+  border-radius: 6px;
+  font-size: 14px;
+  /* Smaller font size */
+  background-color: #555;
+  color: #75756a;
+  transition: border-color 0.2s ease-in-out;
+  /* Smoother transition */
+}
+
+#apply-filter {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #0366d6;
+  /* GitHub blue color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#apply-filter:hover {
+  background-color: #03447b;
+  /* Darker blue on hover */
+}

@@ -1,0 +1,302 @@
+/* Basic CSS for navbar */
+body {
+  font-family: "Open Sans", sans-serif;
+  /* Apply Open Sans font */
+  margin: 0;
+  padding: 0;
+  position: relative;
+  /* Ensure the footer is at the bottom of the page */
+  background-color: #04061a;
+}
+
+.video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  /* Cover the entire viewport */
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0);
+  /* Adjusted opacity */
+  color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  /* Set position to fixed */
+  top: 0;
+  /* Position it at the top */
+  left: 0;
+  /* Align it to the left */
+  right: 0;
+  /* Align it to the right */
+  z-index: 1000;
+  /* Ensure the navbar stays on top of other content */
+  transition: background-color 0.3s ease;
+  /* Smooth transition for background color */
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+  /* Apply Open Sans font */
+}
+
+.navbar-logo img {
+  height: 32px;
+  margin-right: 10px;
+  cursor: pointer;
+  /* Add cursor pointer to indicate clickable */
+  transition: transform 0.3s ease;
+  /* Smooth transition for size increase */
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.navbar-logo img:hover {
+  transform: scale(1.2);
+  /* Increase size on hover */
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.navbar-left a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  transition: all 0.3s ease;
+  /* Smooth transition for hover effect */
+}
+
+.navbar-left a:hover {
+  background-color: #555;
+  border-radius: 6px;
+  transform: scale(1.1);
+  /* Increase size on hover */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* Add glowing effect */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-right input[type="text"],
+.navbar-right button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #555;
+  color: #fff;
+  cursor: text;
+}
+
+.navbar-right input[type="text"] {
+  width: 200px;
+}
+
+.navbar-right .login-button {
+  background-color: rgba(101, 190, 38, 0.8);
+  /* Change background color to green */
+  font-weight: bold;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Smooth transition for hover effect */
+}
+
+.navbar-right .login-button:hover {
+  animation: glow-login 1s infinite alternate;
+  transform: scale(1.1);
+  /* Increase size on hover */
+}
+
+@keyframes glow-login {
+  from {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    /* Initial glow effect */
+  }
+
+  to {
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    /* Increased glow effect */
+  }
+}
+
+.navbar-right .signup-button {
+  background-color: #555;
+  /* Change background color to gray */
+  font-weight: bold;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  /* Smooth transition for hover effect */
+}
+
+.navbar-right .signup-button:hover {
+  animation: glow-signup 1s infinite alternate;
+  transform: scale(1.1);
+  /* Increase size on hover */
+}
+
+@keyframes glow-signup {
+  from {
+    box-shadow: 0 0 10px rgba(121, 120, 120, 0.5);
+    /* Initial glow effect with #555 color */
+  }
+
+  to {
+    box-shadow: 0 0 20px rgba(121, 120, 120, 0.5);
+    /* Increased glow effect with #555 color */
+  }
+}
+
+/* About Us Section */
+.about-us-container {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two columns */
+  gap: 20px;
+  /* Gap between the columns */
+  padding: 50px;
+  /* Padding for the container */
+  color: #fff;
+  /* Text color */
+}
+
+.about-us-container h2 {
+  font-size: 40px;
+}
+
+.about-us-text {
+  grid-column: 1 / span 1;
+  /* Text area spans 1 column */
+  text-align: justify;
+  margin-top: -30px;
+}
+
+.about-us-image {
+  margin-top: 50px;
+  grid-column: 2 / span 1;
+  /* Image area spans 1 column */
+  text-align: center;
+  /* Center the image */
+}
+
+.about-us-image img {
+  max-width: 100%;
+  /* Ensure image doesn't overflow */
+  width: 650px;
+  height: 400px;
+  /* Maintain aspect ratio */
+  border-radius: 10px;
+  /* Rounded corners */
+}
+
+/* Our Story Section */
+.our-story-container {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* Two columns */
+  gap: 20px;
+  /* Gap between the columns */
+  padding: 50px;
+  /* Padding for the container */
+  color: #fff;
+  /* Text color */
+}
+
+.our-story-container h2 {
+  font-size: 40px;
+}
+
+.our-story-text {
+  grid-column: 2 / span 1;
+  /* Text area spans 1 column */
+  text-align: justify;
+  margin-top: -30px;
+}
+
+.our-story-image {
+  margin-top: 50px;
+  grid-column: 1 / span 1;
+  /* Image area spans 1 column */
+  text-align: center;
+  /* Center the image */
+}
+
+.our-story-image img {
+  margin-top: -50px;
+  width: 850px;
+  height: 600px;
+  /* Maintain aspect ratio */
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #222;
+  color: #fff;
+  padding: 50px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-section {
+  width: 30%;
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.footer-section p {
+  margin: 5px 0;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: #f42f2f;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+}
